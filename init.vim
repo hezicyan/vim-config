@@ -128,11 +128,12 @@ nnoremap N :set hlsearch<CR>N
 nnoremap / :set hlsearch<CR>/
 nnoremap ? :set hlsearch<CR>?
 nnoremap * :set hlsearch<CR>*
+nnoremap # :set hlsearch<CR>#
 nnoremap <C-H> :ToggleHLSearch<CR>
 
 silent autocmd BufWritePost plugins.lua source <afile> | PackerCompile
 silent autocmd BufWrite * :Autoformat
-silent autocmd BufNewFile * call s:set_title()
+silent autocmd BufNewFile * call s:set_header()
 silent autocmd FileType * call s:set_indent()
 silent autocmd FileType * call s:set_colorcolumn()
 
@@ -165,12 +166,14 @@ function s:check_back_space()
   return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 
-function s:set_title()
+function s:set_header()
   if &filetype == 'python'
     call setline(1, '#!/usr/bin/env python3')
     call setline(2, '# -*- coding: utf-8 -*-')
   elseif &filetype == 'sh'
     call setline(1, '#!/usr/bin/env bash')
+  elseif &filetype == 'zsh'
+    call setline(1, '#!/usr/bin/env zsh')
   endif
   normal G
 endfunction
