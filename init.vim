@@ -94,8 +94,8 @@ set sessionoptions+=options,resize,winpos,terminal
 if (has("termguicolors"))
   set termguicolors
 endif
-set spell
-set spelllang=en_us
+" set spell
+" set spelllang=en_us
 
 " 透明化方案一
 " if (has("autocmd") && !has("gui_running"))
