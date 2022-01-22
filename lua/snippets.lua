@@ -43,12 +43,12 @@ ls.snippets = {
     s('readf', {
       t({
         'char ReadChar() {',
-        '\tstatic const int kSize = 1000000;',
-        '\tstatic char inbuf[kSize + 10];',
+        '\tstatic const int kBufSize = 1000000;',
+        '\tstatic char inbuf[kBufSize + 10];',
         '\tstatic char* now = inbuf;',
         '\tstatic char* lim = inbuf;',
         '\tif (now == lim) {',
-        '\t\tlim = fread(inbuf, sizeof(char), kSize, stdin) + inbuf;',
+        '\t\tlim = fread(inbuf, sizeof(char), kBufSize, stdin) + inbuf;',
         '\t\tnow = inbuf;',
         '\t}',
         '\treturn now == lim ? EOF : *(now++);',
@@ -103,12 +103,12 @@ ls.snippets = {
     s('readnegf', {
       t({
         'char ReadChar() {',
-        '\tstatic const int kSize = 1000000;',
-        '\tstatic char inbuf[kSize + 10];',
+        '\tstatic const int kBufSize = 1000000;',
+        '\tstatic char inbuf[kBufSize + 10];',
         '\tstatic char* now = inbuf;',
         '\tstatic char* lim = inbuf;',
         '\tif (now == lim) {',
-        '\t\tlim = fread(inbuf, sizeof(char), kSize, stdin) + inbuf;',
+        '\t\tlim = fread(inbuf, sizeof(char), kBufSize, stdin) + inbuf;',
         '\t\tnow = inbuf;',
         '\t}',
         '\treturn now == lim ? EOF : *(now++);',
