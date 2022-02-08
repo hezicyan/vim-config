@@ -80,16 +80,16 @@ return require('packer').startup(function()
         scope_incremental = '<TAB>',
       },
     },
-    indent = {
-      enable = true,
-    },
+    -- indent = {
+    --   enable = true,
+    -- },
     matchup = {
       enable = true,
     },
   }
   vim.wo.foldmethod = 'expr'
   vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
-  vim.wo.foldlevel = 3
+  vim.wo.foldlevel = 99
 
   use 'lukas-reineke/indent-blankline.nvim'
   require('indent_blankline').setup{
