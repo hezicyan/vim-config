@@ -148,10 +148,10 @@ endfunction
 function RunCode()
   if &filetype == 'cpp'
     call asyncrun#run('', {},
-        \ 'clang++ $VIM_FILEPATH -o $VIM_FILENOEXT; $VIM_PATHNOEXT')
+        \ 'clang++ $VIM_FILEPATH -O2 -o $VIM_FILENOEXT; $VIM_PATHNOEXT')
   elseif &filetype == 'c'
     call asyncrun#run('', {},
-        \ 'clang $VIM_FILEPATH -o $VIM_FILENOEXT; $VIM_PATHNOEXT')
+        \ 'clang $VIM_FILEPATH -O2 -o $VIM_FILENOEXT; $VIM_PATHNOEXT')
   elseif &filetype == 'python'
     call asyncrun#run('', {},
         \ 'python3 $VIM_FILEPATH')
