@@ -140,26 +140,10 @@ ls.snippets = {
     s('main', {
       t({
         'int main() {',
-        '\tfreopen("'
-      }),
-      f(function(_, snip)
-        return snip.env.TM_FILENAME_BASE
-      end, {}),
-      t({
-        '.in", "r", stdin);',
-        '\tfreopen("'
-      }),
-      f(function(_, snip)
-        return snip.env.TM_FILENAME_BASE
-      end, {}),
-      t({
-        '.out", "w", stdout);',
-        '',
         '\t'
       }),
       i(0, '// Code here...'),
       t({
-        '',
         '',
         '\treturn 0;',
         '}'

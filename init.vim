@@ -146,19 +146,30 @@ function ToggleHLSearch()
 endfunction
 
 function RunCode()
+  let path = expand('%:p')
+  let name = expand('%:t:r')
   if &filetype == 'cpp'
-    call asyncrun#run('', {},
-        \ 'clang++ $VIM_FILEPATH -O2 -o $VIM_FILENOEXT; $VIM_PATHNOEXT')
+    " call asyncrun#run('', {},
+    "     \ 'clang++ $VIM_FILEPATH -O2 -o $VIM_FILENOEXT; $VIM_PATHNOEXT')
+    let command = 'clang++ ' . path . ' -O2 -o ' . name . '; ./' . name . "\n"
   elseif &filetype == 'c'
-    call asyncrun#run('', {},
-        \ 'clang $VIM_FILEPATH -O2 -o $VIM_FILENOEXT; $VIM_PATHNOEXT')
+    " call asyncrun#run('', {},
+    "     \ 'clang $VIM_FILEPATH -O2 -o $VIM_FILENOEXT; $VIM_PATHNOEXT')
+    let command = 'clang ' . path . ' -O2 -o ' . name . '; ./' . name . "\n"
   elseif &filetype == 'python'
-    call asyncrun#run('', {},
-        \ 'python3 $VIM_FILEPATH')
+    " call asyncrun#run('', {},
+    "     \ 'python3 $VIM_FILEPATH')
+    let command = 'python3 ' . path . "\n"
   elseif &filetype == 'java'
-    call asyncrun#run('', {},
-        \ 'javac $VIM_FILEPATH; java $VIM_FILENOEXT')
+    " call asyncrun#run('', {},
+    "     \ 'javac $VIM_FILEPATH; java $VIM_FILENOEXT')
+    let command = 'javac ' . path . '; java ' . name . "\n"
+  else
+    return
   endif
+  execute 'terminal'
+  call jobsend(b:terminal_job_id, command)
+  normal i
 endfunction
 
 function s:check_back_space()
