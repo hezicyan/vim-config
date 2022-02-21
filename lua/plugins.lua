@@ -96,18 +96,18 @@ return require('packer').startup(function()
     show_current_context = true
   }
 
-  -- use {
-  --   'kyazdani42/nvim-tree.lua',
-  --   requires = 'kyazdani42/nvim-web-devicons'
-  -- }
-  -- require('nvim-tree').setup{
-  --   open_on_setup = true,
-  --   auto_close = true,
-  --   open_on_tab = true,
-  --   diagnostics = {
-  --     enable = true,
-  --   }
-  -- }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons'
+  }
+  require('nvim-tree').setup{
+    open_on_setup = true,
+    auto_close = true,
+    open_on_tab = true,
+    diagnostics = {
+      enable = true,
+    }
+  }
 
   use 'neovim/nvim-lspconfig'
   use 'onsails/lspkind-nvim'
@@ -134,39 +134,39 @@ return require('packer').startup(function()
   -- )
   
   require('luasnip/loaders/from_vscode').lazy_load()
-  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-  -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-  -- local servers = { 'pyright', 'clangd' }
-  -- local nvim_lsp = require('lspconfig')
-  -- for _, lsp in ipairs(servers) do
-  --   nvim_lsp[lsp].setup{
-  --     capabilities = capabilities
-  --   }
-  -- end
-  -- nvim_lsp.jdtls.setup{ cmd = { 'jdtls' } }
-  -- nvim_lsp.sumneko_lua.setup {
-  --   cmd = { 'sumneko' },
-  --   capabilities = capabilities,
-  --   settings = {
-  --     Lua = {
-  --       runtime = {
-  --         version = 'LuaJIT',
-  --         path = vim.split(package.path, ';'),
-  --       },
-  --       diagnostics = {
-  --         globals = { 'vim', 'use' },
-  --       },
-  --       workspace = {
-  --         maxPreload = 2000,
-  --         library = '${3rd}/love2d/library',
-  --         checkThirdParty = false,
-  --       },
-  --       telemetry = {
-  --         enable = false,
-  --       },
-  --     },
-  --   },
-  -- }
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+  local servers = { 'pyright', 'clangd' }
+  local nvim_lsp = require('lspconfig')
+  for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup{
+      capabilities = capabilities
+    }
+  end
+  nvim_lsp.jdtls.setup{ cmd = { 'jdtls' } }
+  nvim_lsp.sumneko_lua.setup {
+    cmd = { 'sumneko' },
+    capabilities = capabilities,
+    settings = {
+      Lua = {
+        runtime = {
+          version = 'LuaJIT',
+          path = vim.split(package.path, ';'),
+        },
+        diagnostics = {
+          globals = { 'vim', 'use' },
+        },
+        workspace = {
+          maxPreload = 2000,
+          library = '${3rd}/love2d/library',
+          checkThirdParty = false,
+        },
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
+  }
 
   require('cmp_tabnine.config'):setup({
     max_lines = 1000;
