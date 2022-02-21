@@ -126,12 +126,12 @@ return require('packer').startup(function()
     run = './install.sh',
   }
 
-  -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  --   vim.lsp.diagnostic.on_publish_diagnostics, {
-  --     -- update diagnostics in insert mode
-  --     update_in_insert = true,
-  --   }
-  -- )
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      -- update diagnostics in insert mode
+      update_in_insert = true,
+    }
+  )
   
   require('luasnip/loaders/from_vscode').lazy_load()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
