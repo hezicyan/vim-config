@@ -146,6 +146,7 @@ function ToggleHLSearch()
 endfunction
 
 function RunCode()
+  execute 'write'
   let path = expand('%:p')
   let name = expand('%:t:r')
   if &filetype == 'cpp'
