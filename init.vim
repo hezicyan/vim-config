@@ -15,7 +15,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'lambdalisue/suda.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
@@ -96,23 +95,6 @@ if (has("termguicolors"))
 endif
 " set spell
 " set spelllang=en_us
-
-" 透明化方案一
-" if (has("autocmd") && !has("gui_running"))
-"   augroup colorset
-"     autocmd!
-"     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-"     autocmd ColorScheme *
-"       \ call onedark#set_highlight("Normal", { "fg": s:white })
-"   augroup END
-" endif
-" colorscheme onedark
-" 透明化方案二
-" highlight StatusLine guibg=NONE ctermbg=NONE
-" highlight Normal guibg=NONE ctermbg=NONE 
-" highlight LineNr guibg=NONE ctermbg=NONE 
-" highlight SignColumn guibg=NONE ctermbg=NONE 
-" highlight EndOfBuffer guibg=NONE ctermbg=NONE 
 
 command! -nargs=0 RunCode call RunCode()
 command! -nargs=0 ToggleHLSearch call ToggleHLSearch()

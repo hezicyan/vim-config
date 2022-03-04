@@ -3,10 +3,22 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
-  use 'monsonjeremy/onedark.nvim'
+  use 'navarasu/onedark.nvim'
   require('onedark').setup{
-    transparent = true
+    style = 'dark',
+    transparent = true,
+    code_style = {
+      comments = 'italic',
+      keywords = 'italic',
+      functions = 'none',
+      strings = 'none',
+      variables = 'none'
+    },
+    diagnostics = {
+      background = false,
+    },
   }
+  require('onedark').load()
 
   use {
     'hoob3rt/lualine.nvim',
@@ -132,7 +144,7 @@ return require('packer').startup(function()
       update_in_insert = true,
     }
   )
-  
+
   require('luasnip/loaders/from_vscode').lazy_load()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
