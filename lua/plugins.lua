@@ -18,6 +18,13 @@ return require('packer').startup(function()
       background = false,
     },
   }
+  local color = require('onedark.colors')
+  local odconfig = vim.g.onedark_config
+  require('onedark').setup{
+    highlights = {
+      TSConstructor = { fg = color.blue, fmt = odconfig.code_style.functions},
+    },
+  }
   require('onedark').load()
 
   use {
