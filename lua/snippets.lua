@@ -43,7 +43,7 @@ ls.snippets = {
     s('readf', {
       t({
         'char ReadChar() {',
-        '\tstatic const int kBufSize = 1000000;',
+        '\tstatic const int kBufSize = 1e6;',
         '\tstatic char inbuf[kBufSize + 10];',
         '\tstatic char* now = inbuf;',
         '\tstatic char* lim = inbuf;',
@@ -103,7 +103,7 @@ ls.snippets = {
     s('readnegf', {
       t({
         'char ReadChar() {',
-        '\tstatic const int kBufSize = 1000000;',
+        '\tstatic const int kBufSize = 1e6;',
         '\tstatic char inbuf[kBufSize + 10];',
         '\tstatic char* now = inbuf;',
         '\tstatic char* lim = inbuf;',
