@@ -4,7 +4,7 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   use 'navarasu/onedark.nvim'
-  require('onedark').setup{
+  require('onedark').setup {
     style = 'dark',
     transparent = true,
     code_style = {
@@ -12,17 +12,17 @@ return require('packer').startup(function()
       keywords = 'italic',
       functions = 'none',
       strings = 'none',
-      variables = 'none'
+      variables = 'none',
     },
     diagnostics = {
       background = false,
     },
   }
-  local color = require('onedark.colors')
+  local color = require 'onedark.colors'
   local odconfig = vim.g.onedark_config
-  require('onedark').setup{
+  require('onedark').setup {
     highlights = {
-      TSConstructor = { fg = color.blue, fmt = odconfig.code_style.functions},
+      TSConstructor = { fg = color.blue, fmt = odconfig.code_style.functions },
     },
   }
   require('onedark').load()
@@ -31,38 +31,38 @@ return require('packer').startup(function()
     'hoob3rt/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
-  require('lualine').setup{
+  require('lualine').setup {
     options = { theme = 'onedark' },
     sections = {
       lualine_b = {
-        'b:gitsigns_status'
+        'b:gitsigns_status',
       },
       lualine_y = {
         {
           'diagnostics',
-          sources = { 'nvim_diagnostic' }
-        }
+          sources = { 'nvim_diagnostic' },
+        },
       },
-      lualine_z = { 'progress', 'location' }
-    }
+      lualine_z = { 'progress', 'location' },
+    },
   }
 
   use {
     'akinsho/bufferline.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
-  require('bufferline').setup{
+  require('bufferline').setup {
     options = {
-      middle_mouse_command = "vertical sbuffer%d",
-      diagnostics = 'nvim_lsp'
-    }
+      middle_mouse_command = 'vertical sbuffer%d',
+      diagnostics = 'nvim_lsp',
+    },
   }
 
   use {
     'lewis6991/gitsigns.nvim',
     requires = {
-      'nvim-lua/plenary.nvim'
-    }
+      'nvim-lua/plenary.nvim',
+    },
   }
   require('gitsigns').setup()
 
@@ -72,21 +72,21 @@ return require('packer').startup(function()
 
   use {
     'folke/trouble.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
 
   use 'tami5/lspsaga.nvim'
 
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim' }
+    requires = { 'nvim-lua/plenary.nvim' },
   }
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
+    run = ':TSUpdate',
   }
-  require('nvim-treesitter.configs').setup{
+  require('nvim-treesitter.configs').setup {
     highlight = {
       enable = true,
     },
@@ -111,20 +111,20 @@ return require('packer').startup(function()
   vim.wo.foldlevel = 99
 
   use 'lukas-reineke/indent-blankline.nvim'
-  require('indent_blankline').setup{
-    show_current_context = true
+  require('indent_blankline').setup {
+    show_current_context = true,
   }
 
   use {
     'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons'
+    requires = 'kyazdani42/nvim-web-devicons',
   }
-  require('nvim-tree').setup{
+  require('nvim-tree').setup {
     open_on_setup = true,
     open_on_tab = true,
     diagnostics = {
       enable = true,
-    }
+    },
   }
 
   use 'neovim/nvim-lspconfig'
@@ -144,8 +144,9 @@ return require('packer').startup(function()
     run = './install.sh',
   }
 
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
+  vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics,
+    {
       -- update diagnostics in insert mode
       update_in_insert = true,
     }
@@ -155,13 +156,13 @@ return require('packer').startup(function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
   local servers = { 'pyright', 'clangd', 'bashls' }
-  local nvim_lsp = require('lspconfig')
+  local nvim_lsp = require 'lspconfig'
   for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup{
-      capabilities = capabilities
+    nvim_lsp[lsp].setup {
+      capabilities = capabilities,
     }
   end
-  nvim_lsp.jdtls.setup{ cmd = { 'jdtls' } }
+  nvim_lsp.jdtls.setup { cmd = { 'jdtls' } }
   nvim_lsp.sumneko_lua.setup {
     cmd = { 'sumneko' },
     capabilities = capabilities,
@@ -186,19 +187,20 @@ return require('packer').startup(function()
     },
   }
 
-  require('cmp_tabnine.config'):setup({
-    max_lines = 1000;
-    max_num_results = 20;
-    sort = true;
-  })
+  require('cmp_tabnine.config'):setup {
+    max_lines = 1000,
+    max_num_results = 20,
+    sort = true,
+  }
 
-  local cmp = require('cmp')
-  local luasnip = require('luasnip')
+  local cmp = require 'cmp'
+  local luasnip = require 'luasnip'
   cmp.setup {
     formatting = {
       format = function(entry, vim_item)
         vim_item.kind = require('lspkind').presets.default[vim_item.kind]
-            .. ' ' .. vim_item.kind
+          .. ' '
+          .. vim_item.kind
         vim_item.menu = ({
           luasnip = '[LuaSnip]',
           cmp_tabnine = '[TabNine]',
@@ -210,7 +212,7 @@ return require('packer').startup(function()
           spell = '[Spell]',
         })[entry.source.name]
         return vim_item
-      end
+      end,
     },
     snippet = {
       expand = function(args)

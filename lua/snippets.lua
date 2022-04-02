@@ -1,4 +1,4 @@
-local ls = require("luasnip")
+local ls = require 'luasnip'
 
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -7,26 +7,26 @@ local i = ls.insert_node
 local f = ls.function_node
 local c = ls.choice_node
 local d = ls.dynamic_node
-local l = require("luasnip.extras").lambda
-local r = require("luasnip.extras").rep
-local p = require("luasnip.extras").partial
-local m = require("luasnip.extras").match
-local n = require("luasnip.extras").nonempty
-local dl = require("luasnip.extras").dynamic_lambda
-local types = require("luasnip.util.types")
+local l = require('luasnip.extras').lambda
+local r = require('luasnip.extras').rep
+local p = require('luasnip.extras').partial
+local m = require('luasnip.extras').match
+local n = require('luasnip.extras').nonempty
+local dl = require('luasnip.extras').dynamic_lambda
+local types = require 'luasnip.util.types'
 
 ls.add_snippets('cpp', {
   s('read', {
     c(1, {
-      t('int'),
-      t('unsigned int'),
-      t('long long'),
-      t('unsigned long long'),
+      t 'int',
+      t 'unsigned int',
+      t 'long long',
+      t 'unsigned long long',
       i(),
     }),
-    t({ ' Read() {', '\t' }),
+    t { ' Read() {', '\t' },
     r(1),
-    t({
+    t {
       ' res = 0;',
       '\tchar ch;',
       '\twhile (!isdigit(ch = getchar())) continue;',
@@ -35,12 +35,12 @@ ls.add_snippets('cpp', {
       '\t} while (isdigit(ch = getchar()));',
       '\treturn res;',
       '}',
-    }),
+    },
     i(0),
   }),
 
   s('readf', {
-    t({
+    t {
       'char ReadChar() {',
       '\tstatic const int kBufSize = 1e6;',
       '\tstatic char inbuf[kBufSize + 10];',
@@ -54,17 +54,17 @@ ls.add_snippets('cpp', {
       '}',
       '',
       '',
-    }),
+    },
     c(1, {
-      t('int'),
-      t('unsigned int'),
-      t('long long'),
-      t('unsigned long long'),
+      t 'int',
+      t 'unsigned int',
+      t 'long long',
+      t 'unsigned long long',
       i(),
     }),
-    t({ ' Read() {', '\t' }),
+    t { ' Read() {', '\t' },
     r(1),
-    t({
+    t {
       ' res = 0;',
       '\tchar ch;',
       '\twhile (!isdigit(ch = ReadChar())) continue;',
@@ -73,19 +73,19 @@ ls.add_snippets('cpp', {
       '\t} while (isdigit(ch = ReadChar()));',
       '\treturn res;',
       '}',
-    }),
+    },
     i(0),
   }),
 
   s('readneg', {
     c(1, {
-      t('int'),
-      t('long long'),
+      t 'int',
+      t 'long long',
       i(),
     }),
-    t({ ' Read() {', '\t' }),
+    t { ' Read() {', '\t' },
     r(1),
-    t({
+    t {
       ' res = 0;',
       '\tbool neg = false;',
       '\tchar ch;',
@@ -95,12 +95,12 @@ ls.add_snippets('cpp', {
       '\t} while (isdigit(ch = getchar()));',
       '\treturn neg ? -res : res;',
       '}',
-    }),
+    },
     i(0),
   }),
 
   s('readnegf', {
-    t({
+    t {
       'char ReadChar() {',
       '\tstatic const int kBufSize = 1e6;',
       '\tstatic char inbuf[kBufSize + 10];',
@@ -114,15 +114,15 @@ ls.add_snippets('cpp', {
       '}',
       '',
       '',
-    }),
+    },
     c(1, {
-      t('int'),
-      t('long long'),
+      t 'int',
+      t 'long long',
       i(),
     }),
-    t({ ' Read() {', '\t' }),
+    t { ' Read() {', '\t' },
     r(1),
-    t({
+    t {
       ' res = 0;',
       '\tbool neg = false;',
       '\tchar ch;',
@@ -132,38 +132,38 @@ ls.add_snippets('cpp', {
       '\t} while (isdigit(ch = ReadChar()));',
       '\treturn neg ? -res : res;',
       '}',
-    }),
+    },
     i(0),
   }),
 
   s('main', {
-    t({
+    t {
       'int main() {',
-      '\t'
-    }),
+      '\t',
+    },
     i(0, '// Code here...'),
-    t({
+    t {
       '',
       '\treturn 0;',
-      '}'
-    }),
+      '}',
+    },
   }),
 
   s('freopen', {
-    t('freopen("'),
+    t 'freopen("',
     f(function(_, snip)
       return snip.env.TM_FILENAME_BASE
     end, {}),
-    t({
+    t {
       '.in", "r", stdin);',
       'freopen("',
-    }),
+    },
     f(function(_, snip)
       return snip.env.TM_FILENAME_BASE
     end, {}),
-    t({
+    t {
       '.out", "w", stdout);',
       '',
-    }),
-  })
+    },
+  }),
 })
