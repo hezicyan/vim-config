@@ -152,7 +152,7 @@ return require('packer').startup(function()
   require('luasnip/loaders/from_vscode').lazy_load()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-  local servers = { 'pyright', 'clangd' }
+  local servers = { 'pyright', 'clangd', 'bashls' }
   local nvim_lsp = require('lspconfig')
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup{
