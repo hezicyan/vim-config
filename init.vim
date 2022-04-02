@@ -6,7 +6,6 @@ scriptencoding utf-8
 filetype plugin indent on
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'Chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'skywind3000/asyncrun.vim'
@@ -18,16 +17,27 @@ Plug 'lambdalisue/suda.vim'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
-let g:formatdef_clang_format = '"clang-format -style=google"'
-let g:formatdef_yapf = '"yapf --style google"'
-let g:formatdef_google_java_format = '"java-format -"'
-let g:formatters_cpp = ['clang_format']
-let g:formatters_c = ['clang_format']
-let g:formatters_python = ['yapf']
-let g:formatters_java = ['google_java_format']
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
+let g:neoformat_cpp_clangformat = {
+    \ 'exe': 'clang-format',
+    \ 'args': ['-style=google'],
+    \ 'stdin': 1,
+    \ }
+let g:neoformat_python_yapf = {
+    \ 'exe': 'yapf',
+    \ 'args': ['--style google'],
+    \ 'stdin': 1,
+    \ }
+let g:neoformat_java_googlefmt = {
+    \ 'exe': 'java-format',
+    \ 'args': ['-'],
+    \ 'stdin': 1,
+    \ }
+let g:neoformat_enabled_cpp = ['clangformat']
+let g:neoformat_enabled_c = ['clangformat']
+let g:neoformat_enabled_python = ['yapf']
+let g:neoformat_enabled_java = ['googlefmt']
+let g:neoformat_basic_format_retab = 1
+let g:neoformat_basic_format_trim = 1
 
 let g:asyncrun_save = 2
 
@@ -99,7 +109,7 @@ endif
 command! -nargs=0 RunCode call RunCode()
 command! -nargs=0 ToggleHLSearch call ToggleHLSearch()
 
-nnoremap <C-L> :Autoformat<CR>
+nnoremap <C-L> :Neoformat<CR>
 nnoremap <C-E> :NvimTreeToggle<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 nnoremap <TAB> :bnext<CR>
@@ -114,7 +124,7 @@ nnoremap # :set hlsearch<CR>#
 nnoremap <C-H> :ToggleHLSearch<CR>
 
 silent autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-silent autocmd BufWrite * :Autoformat
+silent autocmd BufWritePre * undojoin | Neoformat
 silent autocmd BufNewFile * call s:set_header()
 silent autocmd FileType * call s:set_indent()
 silent autocmd FileType * call s:set_colorcolumn()

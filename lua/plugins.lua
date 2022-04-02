@@ -68,6 +68,8 @@ return require('packer').startup(function()
 
   use 'andymass/vim-matchup'
 
+  use 'sbdchd/neoformat'
+
   use {
     'folke/trouble.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
