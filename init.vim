@@ -32,10 +32,18 @@ let g:neoformat_java_googlefmt = {
     \ 'args': ['-'],
     \ 'stdin': 1,
     \ }
+let g:neoformat_lua_stylua = {
+    \ 'exe': 'stylua',
+    \ 'args': ['--column-width 80', '--indent-type Spaces',
+    \          '--indent-width 2', '--quote-style AutoPreferSingle',
+    \          '--call-parentheses None', '-'],
+    \ 'stdin': 1,
+    \ }
 let g:neoformat_enabled_cpp = ['clangformat']
 let g:neoformat_enabled_c = ['clangformat']
 let g:neoformat_enabled_python = ['yapf']
 let g:neoformat_enabled_java = ['googlefmt']
+let g:neoformat_enabled_lua = ['stylua']
 let g:neoformat_basic_format_retab = 1
 let g:neoformat_basic_format_trim = 1
 
