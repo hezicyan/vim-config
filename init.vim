@@ -132,7 +132,7 @@ nnoremap # :set hlsearch<CR>#
 nnoremap <C-H> :ToggleHLSearch<CR>
 
 silent autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-silent autocmd BufWritePre * undojoin | Neoformat
+silent autocmd BufWritePre * Neoformat
 silent autocmd BufNewFile * call s:set_header()
 silent autocmd FileType * call s:set_indent()
 silent autocmd FileType * call s:set_colorcolumn()
