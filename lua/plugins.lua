@@ -73,9 +73,7 @@ return require('packer').startup(function()
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
-  use 'glepnir/lspsaga.nvim'
-  local saga = require('lspsaga')
-  saga.init_lsp_saga()
+  use 'tami5/lspsaga.nvim'
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -121,7 +119,6 @@ return require('packer').startup(function()
   }
   require('nvim-tree').setup{
     open_on_setup = true,
-    auto_close = true,
     open_on_tab = true,
     diagnostics = {
       enable = true,
