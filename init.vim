@@ -113,8 +113,8 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 nnoremap <silent> <F5> :call RunCode()<CR>
 nnoremap <silent> n :set hlsearch<CR>n
 nnoremap <silent> N :set hlsearch<CR>N
-nnoremap <silent> / :set hlsearch<CR>/
-nnoremap <silent> ? :set hlsearch<CR>?
+nnoremap / :set hlsearch<CR>/
+nnoremap ? :set hlsearch<CR>?
 nnoremap <silent> * :set hlsearch<CR>*
 nnoremap <silent> # :set hlsearch<CR>#
 nnoremap <silent> <C-H> :ToggleHLSearch<CR>
