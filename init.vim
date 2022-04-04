@@ -105,19 +105,26 @@ endif
 command! -nargs=0 RunCode call RunCode()
 command! -nargs=0 ToggleHLSearch call ToggleHLSearch()
 
-nnoremap <C-L> :Neoformat<CR>
-nnoremap <C-E> :NvimTreeToggle<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-nnoremap <TAB> :bnext<CR>
-nnoremap <S-TAB> :bprevious<CR>
-nnoremap <F5> :call RunCode()<CR>
-nnoremap n :set hlsearch<CR>n
-nnoremap N :set hlsearch<CR>N
-nnoremap / :set hlsearch<CR>/
-nnoremap ? :set hlsearch<CR>?
-nnoremap * :set hlsearch<CR>*
-nnoremap # :set hlsearch<CR>#
-nnoremap <C-H> :ToggleHLSearch<CR>
+nnoremap <silent> <C-L> :Neoformat<CR>
+nnoremap <silent> <C-N> :NvimTreeToggle<CR>
+nnoremap <silent> <leader>n :NvimTreeFindFile<CR>
+nnoremap <silent> <TAB> :bnext<CR>
+nnoremap <silent> <S-TAB> :bprevious<CR>
+nnoremap <silent> <F5> :call RunCode()<CR>
+nnoremap <silent> n :set hlsearch<CR>n
+nnoremap <silent> N :set hlsearch<CR>N
+nnoremap <silent> / :set hlsearch<CR>/
+nnoremap <silent> ? :set hlsearch<CR>?
+nnoremap <silent> * :set hlsearch<CR>*
+nnoremap <silent> # :set hlsearch<CR>#
+nnoremap <silent> <C-H> :ToggleHLSearch<CR>
+nnoremap <silent> gr :Lspsaga rename<CR>
+nnoremap <silent> gx :Lspsaga code_action<CR>
+xnoremap <silent> gx :<C-U>Lspsaga range_code_action<CR>
+nnoremap <silent> K  :Lspsaga hover_doc<CR>
+nnoremap <silent> go :Lspsaga show_line_diagnostic<CR>
+nnoremap <silent> gj :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> gk :Lspsaga diagnostic_jump_prev<CR>
 
 silent autocmd BufWritePost plugins.lua source <afile> | PackerCompile
 silent autocmd BufWritePre * Neoformat
