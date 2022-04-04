@@ -280,4 +280,81 @@ return require('packer').startup(function()
       { name = 'spell' },
     },
   }
+
+  use 'folke/which-key.nvim'
+  local wk = require 'which-key'
+  wk.setup {
+    plugins = {
+      spelling = {
+        enabled = true,
+      },
+    },
+  }
+  wk.register {
+    ['<C-L>'] = { '<CMD>Neoformat<CR>', 'Format' },
+    ['<C-N>'] = { '<CMD>NvimTreeToggle<CR>', 'Toggle NvimTree' },
+    ['<leader>n'] = {
+      '<CMD>NvimTreeFindFile<CR>',
+      'Find current file in NvimTree',
+    },
+    ['<TAB>'] = { '<CMD>bnext<CR>', 'Go to next buffer' },
+    ['<S-TAB>'] = { '<CMD>bprevious<CR>', 'Go to previous buffer' },
+    ['<F5>'] = { '<CMD>call RunCode()<CR>', 'Compile and run' },
+  }
+  wk.register {
+    ['n'] = { '<CMD>set hlsearch<CR>n', 'Repeat search' },
+    ['N'] = {
+      '<CMD>set hlsearch<CR>N',
+      'Repeat search in opposite direction',
+    },
+    ['/'] = {
+      '<CMD>set hlsearch<CR>/',
+      'Search given pattern forward',
+      silent = false,
+    },
+    ['?'] = {
+      '<CMD>set hlsearch<CR>?',
+      'Search given pattern backward',
+      silent = false,
+    },
+    ['*'] = { '<CMD>set hlsearch<CR>*', 'Search current word forward' },
+    ['#'] = { '<CMD>set hlsearch<CR>#', 'Search current word backward' },
+    ['<C-H>'] = { '<CMD>ToggleHLSearch<CR>', 'Toggle highlight for search' },
+  }
+  wk.register {
+    ['K'] = { '<CMD>Lspsaga hover_doc<CR>', 'Show hover document' },
+    ['gr'] = { '<CMD>Lspsaga rename<CR>', 'Rename' },
+    ['gx'] = { '<CMD>Lspsaga code_action<CR>', 'Code action' },
+    ['go'] = {
+      '<CMD>Lspsaga show_line_diagnostic<CR>',
+      'Show line diagnositics',
+    },
+    ['gj'] = {
+      '<CMD>Lspsaga diagnostic_jump_next<CR>',
+      'Jump to next diagnostic',
+    },
+    ['gk'] = {
+      '<CMD>Lspsaga diagnostic_jump_prev<CR>',
+      'Jump to previous diagnostic',
+    },
+  }
+  wk.register {
+    ['gx'] = {
+      '<CMD><C-U>Lspsaga range_code_action<CR>',
+      'Code action in range',
+      mode = 'x',
+    },
+  }
+  wk.register {
+    ['<leader>xx'] = { '<CMD>TroubleToggle<CR>', 'Open trouble list' },
+    ['<leader>xw'] = {
+      '<CMD>TroubleToggle workspace_diagnostics<CR>',
+      'Show diagnostics in workspace',
+    },
+    ['<leader>xd'] = {
+      '<CMD>TroubleToggle document_diagnostics<CR>',
+      'Show diagnostics in this document',
+    },
+    ['gR'] = { '<CMD>TroubleToggle lsp_references<CR>', 'Show references' },
+  }
 end)
