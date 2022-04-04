@@ -5,18 +5,6 @@ set encoding=utf-8
 scriptencoding utf-8
 filetype plugin indent on
 
-call plug#begin('~/.config/nvim/plugged')
-Plug 'jiangmiao/auto-pairs'
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'djoshea/vim-autoread'
-Plug 'preservim/nerdcommenter'
-Plug 'tpope/vim-surround'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-Plug 'lambdalisue/suda.vim'
-Plug 'sheerun/vim-polyglot'
-call plug#end()
-
 let g:neoformat_cpp_clangformat = {
     \ 'exe': 'clang-format',
     \ 'args': ['-style=google'],

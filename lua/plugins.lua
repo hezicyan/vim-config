@@ -60,15 +60,25 @@ return require('packer').startup(function()
 
   use {
     'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-    },
+    requires = { 'nvim-lua/plenary.nvim' },
   }
   require('gitsigns').setup()
 
   use 'andymass/vim-matchup'
-
+  use 'jiangmiao/auto-pairs'
+  use 'Vimjas/vim-python-pep8-indent'
+  use 'skywind3000/asyncrun.vim'
+  use 'djoshea/vim-autoread'
+  use 'preservim/nerdcommenter'
+  use 'tpope/vim-surround'
+  use 'lambdalisue/suda.vim'
+  use 'sheerun/vim-polyglot'
   use 'sbdchd/neoformat'
+
+  use {
+    'iamcco/markdown-preview.nvim',
+    run = 'cd app && yarn install',
+  }
 
   use {
     'folke/trouble.nvim',
@@ -181,7 +191,7 @@ return require('packer').startup(function()
 
   use {
     'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
+    requires = { 'kyazdani42/nvim-web-devicons' },
   }
   require('nvim-tree').setup {
     open_on_setup = true,
