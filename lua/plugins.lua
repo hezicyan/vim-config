@@ -346,7 +346,7 @@ return require('packer').startup(function()
     },
   }
   wk.register {
-    ['<leader>xx'] = { '<CMD>TroubleToggle<CR>', 'Open trouble list' },
+    ['<leader>xx'] = { '<CMD>TroubleToggle<CR>', 'Toggle trouble list' },
     ['<leader>xw'] = {
       '<CMD>TroubleToggle workspace_diagnostics<CR>',
       'Show diagnostics in workspace',
