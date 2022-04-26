@@ -127,11 +127,11 @@ function RunCode()
   if &filetype == 'cpp'
     " call asyncrun#run('', {},
     "     \ 'clang++ $VIM_FILEPATH -O2 -o $VIM_FILENOEXT; $VIM_PATHNOEXT')
-    let command = 'clang++ ' . path . ' -O2 -o ' . name . '; ./' . name . "\n"
+    let command = 'clang++ ' . path . ' -O2 -o ' . name . ' && ./' . name . "\n"
   elseif &filetype == 'c'
     " call asyncrun#run('', {},
     "     \ 'clang $VIM_FILEPATH -O2 -o $VIM_FILENOEXT; $VIM_PATHNOEXT')
-    let command = 'clang ' . path . ' -O2 -o ' . name . '; ./' . name . "\n"
+    let command = 'clang ' . path . ' -O2 -o ' . name . ' && ./' . name . "\n"
   elseif &filetype == 'python'
     " call asyncrun#run('', {},
     "     \ 'python3 $VIM_FILEPATH')
@@ -139,7 +139,7 @@ function RunCode()
   elseif &filetype == 'java'
     " call asyncrun#run('', {},
     "     \ 'javac $VIM_FILEPATH; java $VIM_FILENOEXT')
-    let command = 'javac ' . path . '; java ' . name . "\n"
+    let command = 'javac ' . path . ' && java ' . name . "\n"
   else
     return
   endif
