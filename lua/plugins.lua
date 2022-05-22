@@ -138,7 +138,7 @@ return require('packer').startup(function()
   }
 
   use 'neovim/nvim-lspconfig'
-  use 'onsails/lspkind-nvim'
+  use 'onsails/lspkind.nvim'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'rafamadriz/friendly-snippets'
@@ -356,5 +356,36 @@ return require('packer').startup(function()
       'Show diagnostics in this document',
     },
     ['gR'] = { '<CMD>TroubleToggle lsp_references<CR>', 'Show references' },
+  }
+  local gs = package.loaded.gitsigns
+  wk.register {
+    ['<leader>xg'] = {
+      '<CMD>Gitsigns setqflist<CR>',
+      'Populate the quickfix list with hunks',
+    },
+    [']c'] = {
+      function()
+        if vim.wo.diff then
+          return ']c'
+        end
+        vim.schedule(function()
+          gs.next_hunk()
+        end)
+        return '<IGNORE>'
+      end,
+      'Jump to next hook',
+    },
+    ['[c'] = {
+      function()
+        if vim.wo.diff then
+          return '[c'
+        end
+        vim.schedule(function()
+          gs.prev_hunk()
+        end)
+        return '<IGNORE>'
+      end,
+      'Jump to previous hook',
+    },
   }
 end)
