@@ -42,6 +42,7 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDDefaultAlign = 'left'
 
 let g:suda_smart_edit = 1
+let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 
 let g:nvim_tree_git_hl = 1
 let g:nvim_tree_highlight_opened_files = 1
